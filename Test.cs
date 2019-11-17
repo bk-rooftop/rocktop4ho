@@ -137,7 +137,7 @@ public class RoketOutfact
     {
         // static readonly 호출 : static 호출 방식 ( 별도의 메모리할당 필요없음)
         Debug.Log(RoketOutfact.weather_static);
-        
+
         /*
          // 일반상수는 일반 호출방식 ( 객체를 만들어서 메모리 할당 해야 사용할수 있음)
          RoketOutfact nrm = new RoketOutfact();
@@ -150,4 +150,63 @@ public class RoketOutfact
         Debug.Log(wind);
     }
 
+}
+
+/*
+ * 오버로딩 (over loading)
+ * 하나의 이름으로 여러개의 함수를 만드는 기법
+ * 매개변수의 종류를 달리해서 각각의 매개변수에 따라 호출되는 함수를 고를수 있음
+ * 
+ * 변환형 함수이름 (int a)
+ * {
+ * 
+ * }
+ * * 변환형 함수이름 (double a)
+ * {
+ * 
+ * }
+    * 변환형 함수이름 (String a)
+ * {
+ * 
+ * }
+    이런식
+
+    
+ */
+
+public class Donation
+{
+    public int TodayDonation(int earnMoney)
+    {
+        return earnMoney;
+    }
+    public double TodayDonation(double earnMoney)
+    {
+        return earnMoney;
+    }
+    public string TodayDonation(double earnMoney)
+    {
+        return earnMoney;
+    }
+}
+
+public class GetToday
+{
+    public void Main()
+    {
+        //객체생성
+        Donation getMoney = new Donation();
+        int todayMoney = 0;
+        double todayBox = 0;
+        string todayLetter = 0;
+
+        // 후원 집계
+        todayMoney += getMoney.TodayDonation(10000);
+        todayBox += getMoney.TodayDonation(2.2);
+        todayLetter += getMoney.TodayDonation("I Love You");
+
+        Debug.Log("오늘의 수익: {0}", todayMoney);
+        Debug.Log("오늘의 택배: {0}", todayBox);
+        Debug.Log("오늘의 편지: {0}", todayLetter);
+    }
 }
