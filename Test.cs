@@ -210,3 +210,38 @@ public class GetToday
         Debug.Log("오늘의 편지: {0}", todayLetter);
     }
 }
+//연산자 오버로딩
+
+    //연산자 오버로딩은 public static '반환형' operator '연산자' (매개변수) 형태임.
+    class 귀요미
+{
+    public static string operator +(귀요미 one, 귀요미 two)
+    {
+        return "귀요미";
+    }
+    public static string operator *(귀요미 one, 귀요미 two)
+    {
+        return "과로사";
+    }
+    public static string operator -(귀요미 one, 귀요미 two)
+    {
+        return "행복해";
+    }
+    public static string operator /(귀요미 one, 귀요미 two)
+    {
+        return "너가해";
+    }
+}
+
+class OperOverloadTestMain
+{
+    public static void Main()
+    {
+        귀요미 일 = new 귀요미();
+        Debug.Log(일 + 일);
+        Debug.Log(일 * 일);
+        Debug.Log(일 - 일);
+        Debug.Log(일 / 일);
+    }
+
+}
