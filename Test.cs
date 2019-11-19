@@ -245,3 +245,107 @@ class OperOverloadTestMain
     }
 
 }
+
+// this 의 사용법
+// this는 함수내에서 클래스의 내의 변수에 접근할때 사용. 아래 예제처럼 함수의 매개변수 이름과 클래스변수의 이름이 같을때 this를 사용해서 클래스 변수를 호출할수있음. 
+// this 를 이용해 생성자를 여러개 만든경우(ex 오버로딩) this를 사용해서 여러개의 생성자를 한꺼번에 호출할수있음. 
+
+public class ThisTest
+{
+    private string name = "으아아";
+    public ThisTest(string name)
+    {
+        Debug.Log(name);
+        Debug.Log(this.name);
+    }
+
+    public static void Main()
+    {
+        ThisTest a = new ThisTest("홍길동");
+
+    }
+}
+
+// this를 사용안해서 따로따로 생성자 함수를 호출하는경우
+
+public class 알바호출
+{
+    // 1번 생성자
+    public 알바호출()
+    {
+
+    }
+    // 2번 생성자
+    public 알바호출(string a)
+    {
+
+    }
+    // 3번 생성자
+    public 알바호출(string a, int c)
+    {
+
+    }
+
+    public static void Main()
+    {
+        // 1번 알바 호출
+        알바호출 call1 = new 알바호출();
+        // 2번 알바 호출
+        알바호출 call2 = new 알바호출("!!!!");
+        // 3번 알바 호출
+        알바호출 call3 = new 알바호출("!!!!", 5000);
+
+    }
+}
+
+// this 를 사용해 여러가지 생성자를 한번에 호출하는 경우 
+
+public class 알바호출
+{
+    // 1번 생성자
+    public 알바호출() : this ("분신술 사용!!") 
+    //아래 함수에서 빈 생성자(1번)을 호출했으나 this가 있어서 this가 가르키는 생성자(매개변수 스트링인)에게 먼저 갔다가 끝나면 돌아와서 1번생성자 실행
+    {
+        Console.WriteLine("1번 생성자 호출");
+    }
+    // 2번 생성자
+    public 알바호출(string a) : this("2번분신술 사용!!", 5000)
+    // 위에서 2번을 먼저실행시킨다고 해서 와봤더니 여기도 this(스트링, 인트)인 생성자를 가르킴. 그래서 3번생성자에게 가서 실행후 2번생성자 실행. 
+    {
+        Console.WriteLine("2번 생성자 호출");
+    }
+
+    // 3번 생성자
+    public 알바호출(string a, int c)
+    {
+        Console.WriteLine("3번 생성자 호출");
+    }
+
+    public static void Main()
+    {
+        // 1번 알바 호출
+        알바호출 call1 = new 알바호출();
+    }
+}
+
+/* 1번 생성자가 2번생성자를 상속받고
+ * 2번 생성자가 3번 생성자를 상속 받으면 실행 순서
+ * 
+ * 할아버지 > 아빠 > 아들 이라고 치면 
+ * 
+ * 할아버지 
+ * {
+ * 
+ * }
+ * 아빠 : 할아버지
+ * {
+ * 
+ * }
+ * 아들 : 아빠
+ * {
+ * 
+ * } 
+ * 
+ * 이런식이라고 치면 아들을 실행시키면 아빠를 먼저 실행시키기 위해 가고 아빠를 보면 할아버지 상속이니까 할아버지를 먼저 실행시키게 됨
+ * 결국 아들을 실행시키지만 실행순서는 할아버지 -> 아빠 -> 아들 순으로 실행시키게 된다 
+*/
