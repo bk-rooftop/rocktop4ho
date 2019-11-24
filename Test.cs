@@ -349,3 +349,71 @@ public class 알바호출
  * 이런식이라고 치면 아들을 실행시키면 아빠를 먼저 실행시키기 위해 가고 아빠를 보면 할아버지 상속이니까 할아버지를 먼저 실행시키게 됨
  * 결국 아들을 실행시키지만 실행순서는 할아버지 -> 아빠 -> 아들 순으로 실행시키게 된다 
 */
+
+class 아버지
+{
+    public void 아빠옷()
+    {
+        Debug.Log("아빠의 오래된 옷");
+    }
+}
+
+class 아들 : 아버지
+{
+    //함수를 오버라이딩 할떄 new를 붙여서 오버라이딩 함수와 일반 함수를 구분한다. 
+    new public void 아빠옷()
+    {
+        Debug.Log("아들이 수선한 아빠의 옷");
+    }
+
+    public void 아들옷()
+    {
+        Debug.Log("아들의 원래 옷");
+    }
+}
+
+class Main
+{
+    public void Main()
+    {
+        아들 son = new 아들();
+        son.아빠옷();
+        son.아들옷();
+    }
+}
+
+class 아버지
+{
+    public void 아빠옷()
+    {
+        Debug.Log("아빠의 오래된 옷");
+    }
+}
+
+class 아들 : 아버지
+{
+    //함수를 오버라이딩 할떄 new를 붙여서 오버라이딩 함수와 일반 함수를 구분한다. 
+    new public void 아빠옷()
+    {
+        Debug.Log("아들이 수선한 아빠의 옷");
+    }
+
+    public void 아들옷()
+    {
+        Debug.Log("아들의 원래 옷");
+    }
+    public void 돈없는아들옷()
+    {
+        //base를 붙이면 오버라이딩 되지 않은 아버지클래스의 함수를 호출한다.
+        base.아빠옷();
+        아빠옷();
+    }
+}
+class Main
+{
+    public void Main()
+    {
+        아들 son = new 아들();
+        son.돈없는아들옷();
+    }  
+}
