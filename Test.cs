@@ -417,3 +417,53 @@ class Main
         son.돈없는아들옷();
     }  
 }
+
+class For
+{
+    void Start()
+    {
+        LoopA(); // LoopA 실행 끝날때까지 LoopA 에게 주도권 넘어감 -> 끝나면 다음줄 실행
+        LoopB();
+    }
+
+    void LoopA() 
+    {
+        for (i = 0; i < 100; i++)
+        {
+            print("i의 값 =" + i);
+        }
+    }
+
+    void LoopB()
+    {
+        for (x = 0; x < 100; x++)
+        {
+            print("x의 값 =" + x);
+        }
+    }
+}
+
+class For2
+{
+    void Start()
+    {
+        Startcoroutine(LoopA());
+        Startcoroutine(LoopB());
+    }
+
+    IEnumerator LoopA()
+    {
+        for (i = 0; i < 100; i++)
+        {
+            print("i의 값 =" + i);
+        }
+    }
+
+    IEnumerator LoopB()
+    {
+        for (x = 0; x < 100; x++)
+        {
+            print("x의 값 =" + x);
+        }
+    }
+}
