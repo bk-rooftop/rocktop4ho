@@ -467,3 +467,33 @@ class For2
         }
     }
 }
+public class Test
+{
+    int intValue;
+
+    float floatValue = 10.5f;
+    float floatValue2 = 20.5f;
+
+    void FloatTOInt(float _parameter, float _parameter2)
+    {
+        /*
+         * intValue = (int)(_parameter + _parameter2);
+        print(intValue);
+
+        return 4; // 위의 값과 전혀 상관없이 결국 이 함수의 리턴 값은 4가 됨 . 즉 return 값이 이 함수의 최종 결과물
+        */
+        //따라서 제대로 쓰려면 
+        return Multiply(_parameter + _parameter2);
+    }
+
+    void Multiply(int _parameter)
+    {
+        return _parameter * _parameter;
+    }
+
+    void Start()
+    {
+      print( FloatTOInt(floatValue, floatValue2));
+       // print(intValue);
+    }
+}
