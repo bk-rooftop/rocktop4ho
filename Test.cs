@@ -497,3 +497,42 @@ public class Test
        // print(intValue);
     }
 }
+
+public class Test
+{
+    int a = 5; // 멤버 변수, 전역 변수
+
+
+    void Abc()
+    {
+        int a = 5; // 지역변수 => 함수가 실행되고나서 생성됨. 이후 함수가 끝나고 나면 소멸됨; 생성과 파괴가 자주 일어남 
+
+        a = 6; // 이렇게 전역 변수와 지역변수가 이름이 같은데 함수 안에서 변수를 변경할 경우 지역변수에 할당된다. 지역변수가 전역변수보다 우선순위 위에있음.
+                // 이래서 이름이 중복되지 않게 해야겠네.. 
+    }
+    void Abc2(float a /*매개 변수 . 함수에 전달 되는 변수*/)
+    {
+       
+    }
+
+}
+
+public class Test2
+{
+    private int a;
+    public int b;
+    public static int c; // 공유변수. 정적변수. 이 값은 하나임. 
+
+}
+
+public class Test
+{
+    Test2 aaa = new Test2();
+
+    void Abc()
+    {
+        aaa.b = 5;
+        aaa.a = 5; // 프라이빗 때문에 접근 불가. 
+
+    }
+}
